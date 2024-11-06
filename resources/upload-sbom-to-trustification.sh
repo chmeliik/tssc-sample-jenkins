@@ -24,6 +24,10 @@ set -o errexit -o nounset -o pipefail
 # Return zero matches when a glob doesn't match rather than returning the glob itself
 shopt -s nullglob
 
+SCRIPTDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+# shellcheck source=rhtap/common.sh
+source "$SCRIPTDIR"/common.sh
+
 # Set defaults for unset optional variables
 : "${SBOMS_DIR=./.sboms}"
 : "${HTTP_RETRIES=3}"
